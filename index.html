@@ -12,10 +12,12 @@
             --bg-color: #ffffff;
             --point-gray: #f5f5f5;
             --text-gray: #666666;
+            --leaf-green: #aebca9; /* 우아한 식물 선 색상 */
+            --bg-green: #f2f5f1;   /* 아주 연한 식물 배경 색상 */
         }
         body {
             font-family: 'Pretendard', sans-serif;
-            background-color: #e9ecef; /* PC에서 볼 때 배경색 */
+            background-color: #e9ecef;
             margin: 0;
             padding: 0;
             color: var(--main-color);
@@ -23,7 +25,7 @@
             letter-spacing: -0.03em;
         }
         .container {
-            max-width: 480px; /* 모바일 화면 크기에 맞춤 */
+            max-width: 480px;
             margin: 0 auto;
             background-color: var(--bg-color);
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
@@ -33,6 +35,7 @@
             padding: 80px 30px;
             text-align: center;
         }
+        
         /* 메인 커버 */
         .hero {
             padding: 0;
@@ -42,11 +45,11 @@
             width: 100%;
             height: 65vh;
             object-fit: cover;
-            background-color: var(--point-gray); /* 사진이 없을 때 회색 배경 */
+            background-color: var(--point-gray);
             display: block;
         }
         .hero-text {
-            padding: 50px 20px;
+            padding: 50px 20px 40px;
         }
         .hero-text h1 {
             font-size: 24px;
@@ -59,13 +62,24 @@
             color: var(--text-gray);
             margin: 5px 0;
         }
+
+        /* 식물 일러스트 장식 */
+        .leaf-deco {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
         
         /* 인사말 */
+        .greeting {
+            padding-top: 20px;
+        }
         .greeting-title {
             font-size: 14px;
-            color: var(--text-gray);
+            color: var(--leaf-green);
             margin-bottom: 30px;
             letter-spacing: 0.2em;
+            font-weight: 500;
         }
         .greeting-text {
             font-size: 15px;
@@ -81,22 +95,28 @@
             margin: 0 5px;
         }
 
-        /* 디데이 카운트다운 */
+        /* 디데이 카운트다운 (연한 그린 배경) */
         .d-day-section {
-            background-color: var(--point-gray);
+            background-color: var(--bg-green);
             padding: 50px 20px;
         }
         #d-day-text {
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.05em;
+            color: #4a5446;
+        }
+        #d-day-text strong {
+            font-weight: 600;
         }
 
         /* 오시는 길 */
         .location h2 {
-            font-size: 18px;
-            font-weight: 400;
+            font-size: 16px;
+            color: var(--leaf-green);
+            font-weight: 500;
             margin-bottom: 30px;
+            letter-spacing: 0.1em;
         }
         .map-box {
             width: 100%;
@@ -124,13 +144,15 @@
 
         /* 마음 전하실 곳 (계좌) */
         .account h2 {
-            font-size: 18px;
-            font-weight: 400;
+            font-size: 16px;
+            color: var(--leaf-green);
+            font-weight: 500;
             margin-bottom: 30px;
+            letter-spacing: 0.1em;
         }
         .account-box {
             background-color: var(--bg-color);
-            border: 1px solid #eee;
+            border: 1px solid #e0e0e0;
             padding: 20px;
             margin-bottom: 15px;
             text-align: left;
@@ -150,12 +172,18 @@
             font-family: inherit;
         }
         
-        /* 갤러리 (사진 추가용) */
+        /* 갤러리 */
+        .gallery h2 {
+            font-size: 16px;
+            color: var(--leaf-green);
+            font-weight: 500;
+            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+        }
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-top: 20px;
         }
         .gallery-item {
             width: 100%;
@@ -179,9 +207,7 @@
     
     <!-- 1. 메인 섹션 -->
     <section class="hero">
-        <!-- 메인 사진: 여기에 실제 사진 파일명을 넣으세요 (예: main.jpg) -->
         <img src="main.jpg" alt="메인 웨딩 사진" class="main-img" onerror="this.style.display='none';">
-        <!-- 사진이 로드되지 않았을 때 임시로 보여주는 영역 -->
         <div style="width:100%; height:65vh; background:#f5f5f5; position:absolute; top:0; z-index:-1; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:14px;">메인 사진 (main.jpg)을 올려주세요</div>
         
         <div class="hero-text">
@@ -193,6 +219,17 @@
 
     <!-- 2. 인사말 섹션 -->
     <section class="greeting">
+        <!-- 얇고 우아한 나뭇잎 일러스트 (코드 자체로 그림을 그림) -->
+        <div class="leaf-deco">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aebca9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22V10"></path>
+                <path d="M12 12C12 12 9.5 9.5 7 10C5.5 10.3 5 12 5 12C5 12 6.7 13.5 10 13.5C11.5 13.5 12 12 12 12Z"></path>
+                <path d="M12 15C12 15 14.5 12.5 17 13C18.5 13.3 19 15 19 15C19 15 17.3 16.5 14 16.5C12.5 16.5 12 15 12 15Z"></path>
+                <path d="M12 8C12 8 9.5 5.5 7 6C5.5 6.3 5 8 5 8C5 8 6.7 9.5 10 9.5C11.5 9.5 12 8 12 8Z"></path>
+                <path d="M12 10C12 10 14.5 7.5 17 8C18.5 8.3 19 10 19 10C19 10 17.3 11.5 14 11.5C12.5 11.5 12 10 12 10Z"></path>
+            </svg>
+        </div>
+        
         <div class="greeting-title">INVITATION</div>
         <div class="greeting-text">
             함께 있을 때 가장 나다운 모습이 되게 하는 사람,<br>
@@ -208,7 +245,7 @@
         </div>
     </section>
 
-    <!-- 3. 디데이 섹션 -->
+    <!-- 3. 디데이 섹션 (연한 식물색 배경) -->
     <section class="d-day-section">
         <div id="d-day-text">준혁, 민주의 결혼식이<br><strong>00일</strong> 남았습니다.</div>
     </section>
@@ -217,7 +254,6 @@
     <section class="gallery">
         <h2>GALLERY</h2>
         <div class="gallery-grid">
-            <!-- 갤러리 사진들: photo1.jpg 형식으로 올리시면 됩니다 -->
             <img src="photo1.jpg" class="gallery-item" alt="웨딩사진 1" onerror="this.style.opacity='0.5'">
             <img src="photo2.jpg" class="gallery-item" alt="웨딩사진 2" onerror="this.style.opacity='0.5'">
             <img src="photo3.jpg" class="gallery-item" alt="웨딩사진 3" onerror="this.style.opacity='0.5'">
@@ -227,8 +263,16 @@
 
     <!-- 5. 오시는 길 섹션 -->
     <section class="location">
+        <!-- 얇은 올리브 가지 일러스트 -->
+        <div class="leaf-deco">
+            <svg width="40" height="15" viewBox="0 0 40 15" fill="none" stroke="#aebca9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 8 C15 5 25 11 35 8" />
+                <path d="M12 6 C10 4 13 2 15 4" />
+                <path d="M28 9 C30 11 27 13 25 11" />
+            </svg>
+        </div>
         <h2>LOCATION</h2>
-        <!-- 지도 이미지를 캡처해서 넣거나 지도 API를 연동할 수 있습니다 -->
+        
         <div class="map-box">
             지도 이미지를 넣어주세요 (map.jpg)
         </div>
@@ -267,7 +311,6 @@
 </div>
 
 <script>
-    // 1. 디데이 계산기 스크립트
     function calculateDday() {
         const weddingDate = new Date("2027-03-28T14:00:00").getTime();
         const today = new Date().getTime();
@@ -285,7 +328,6 @@
         }
     }
     
-    // 2. 계좌번호 복사 스크립트
     function copyToClipboard(accountNumber, bankName) {
         navigator.clipboard.writeText(accountNumber).then(() => {
             alert(bankName + ' 계좌번호(' + accountNumber + ')가 복사되었습니다.');
@@ -294,7 +336,6 @@
         });
     }
 
-    // 페이지 로드 시 디데이 실행
     window.onload = function() {
         calculateDday();
     };

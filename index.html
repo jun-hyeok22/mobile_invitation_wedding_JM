@@ -284,29 +284,30 @@
         <div class="eng-title" style="text-align: center;">R.S.V.P</div>
         <p style="font-size: 14px; color: var(--text-gray); margin-bottom: 20px; text-align: center;">참석 여부를 미리 알려주세요</p>
         
-        <!-- 팝업용 폼 (엔트리 번호 및 옵션 완벽 매칭) -->
-        <form id="popupRsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSft9Ty__4SKLwiIOIV1w3CU-5oXdjViXWtK8TouRkLsWw6kaw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        <!-- 팝업용 폼 (새로운 구글 폼 URL 및 엔트리 완벽 반영) -->
+        <form id="popupRsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLScgGOYMQATDoD0Oz7Tiw4D4zzaWgs4n925EoFR1x6iCFx01YA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
             <span class="rsvp-label">성함 및 연락처</span>
             <div class="rsvp-row">
-                <input type="text" name="entry.776780243" placeholder="성함 입력" required maxlength="10">
-                <input type="text" name="entry.89621095" placeholder="연락처 ('-' 없이)" required maxlength="11">
+                <input type="text" name="entry.176035411" placeholder="성함 입력" required maxlength="10">
+                <input type="text" name="entry.357811213" placeholder="연락처 ('-' 없이)" required maxlength="11">
             </div>
 
             <span class="rsvp-label">구분</span>
             <div class="radio-group" style="margin-bottom: 15px;">
-                <label><input type="radio" name="entry.1228443023" value="신랑측" checked> 신랑측</label>
-                <label><input type="radio" name="entry.1228443023" value="신부"> 신부</label>
+                <label><input type="radio" name="entry.1995038037" value="신랑측" checked> 신랑측</label>
+                <!-- 새로운 폼 기준 '신부측'으로 정확히 반영 -->
+                <label><input type="radio" name="entry.1995038037" value="신부측"> 신부측</label>
             </div>
 
             <span class="rsvp-label">참석 여부</span>
             <div class="radio-group">
-                <label><input type="radio" name="entry.720266882" value="참석" onclick="toggleMealBox(true, 'popup-meal-box')" checked> 참석</label>
-                <label><input type="radio" name="entry.720266882" value="참석 어려움" onclick="toggleMealBox(false, 'popup-meal-box')"> 참석 어려움</label>
+                <label><input type="radio" name="entry.2084198374" value="참석" onclick="toggleMealBox(true, 'popup-meal-box')" checked> 참석</label>
+                <label><input type="radio" name="entry.2084198374" value="참석 어려움" onclick="toggleMealBox(false, 'popup-meal-box')"> 참석 어려움</label>
             </div>
 
             <div id="popup-meal-box" class="meal-count-box">
                 <span class="rsvp-label" style="font-size: 13px; margin-bottom: 5px;">식사하시는 총 인원수</span>
-                <select name="entry.1434697144">
+                <select name="entry.68672985">
                     <option value="1명">1명</option>
                     <option value="2명">2명</option>
                     <option value="3명">3명</option>
@@ -487,35 +488,36 @@
         </div>
     </section>
 
-    <!-- 🌟 변경된 순서: R.S.V.P 섹션이 계좌 안내보다 앞으로 옴 -->
+    <!-- 🌟 R.S.V.P 섹션 (하단용 폼) -->
     <section class="rsvp-sec fade-up">
         <div class="divider"></div>
         <div class="eng-title">R.S.V.P</div>
         <p style="font-size: 14px; color: var(--text-gray); margin-bottom: 30px;">참석 여부를 알려주세요</p>
         
-        <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSft9Ty__4SKLwiIOIV1w3CU-5oXdjViXWtK8TouRkLsWw6kaw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        <!-- 하단 폼 (새로운 구글 폼 URL 및 엔트리 완벽 반영) -->
+        <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLScgGOYMQATDoD0Oz7Tiw4D4zzaWgs4n925EoFR1x6iCFx01YA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
             <div class="rsvp-wrap">
                 <span class="rsvp-label">성함 및 연락처</span>
                 <div class="rsvp-row">
-                    <input type="text" name="entry.776780243" placeholder="성함 입력" required maxlength="10">
-                    <input type="text" name="entry.89621095" placeholder="연락처 ('-' 없이)" required maxlength="11">
+                    <input type="text" name="entry.176035411" placeholder="성함 입력" required maxlength="10">
+                    <input type="text" name="entry.357811213" placeholder="연락처 ('-' 없이)" required maxlength="11">
                 </div>
 
                 <span class="rsvp-label">구분</span>
                 <div class="radio-group" style="margin-bottom: 15px;">
-                    <label><input type="radio" name="entry.1228443023" value="신랑측" checked> 신랑측</label>
-                    <label><input type="radio" name="entry.1228443023" value="신부"> 신부</label>
+                    <label><input type="radio" name="entry.1995038037" value="신랑측" checked> 신랑측</label>
+                    <label><input type="radio" name="entry.1995038037" value="신부측"> 신부측</label>
                 </div>
 
                 <span class="rsvp-label">참석 여부</span>
                 <div class="radio-group">
-                    <label><input type="radio" name="entry.720266882" value="참석" onclick="toggleMealBox(true, 'meal-box')" checked> 참석</label>
-                    <label><input type="radio" name="entry.720266882" value="참석 어려움" onclick="toggleMealBox(false, 'meal-box')"> 참석 어려움</label>
+                    <label><input type="radio" name="entry.2084198374" value="참석" onclick="toggleMealBox(true, 'meal-box')" checked> 참석</label>
+                    <label><input type="radio" name="entry.2084198374" value="참석 어려움" onclick="toggleMealBox(false, 'meal-box')"> 참석 어려움</label>
                 </div>
 
                 <div id="meal-box" class="meal-count-box">
                     <span class="rsvp-label" style="font-size: 13px; margin-bottom: 5px;">식사하시는 총 인원수</span>
-                    <select name="entry.1434697144">
+                    <select name="entry.68672985">
                         <option value="1명">1명</option>
                         <option value="2명">2명</option>
                         <option value="3명">3명</option>
@@ -532,7 +534,7 @@
         <button class="url-copy-btn" onclick="copyUrl()">청첩장 주소 복사하기</button>
     </section>
 
-    <!-- 🌟 마음 전하실 곳 (계좌) - 정중한 양해 문구 추가 및 위치 변경 -->
+    <!-- 🌟 마음 전하실 곳 (계좌) -->
     <section class="account fade-up">
         <div class="divider"></div>
         <div class="eng-title">Guestbook & Gift</div>

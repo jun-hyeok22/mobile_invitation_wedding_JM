@@ -17,6 +17,8 @@
             --gold: #c5a059;     
             --point-gray: #f5f5f5;
             --text-gray: #666666;
+            --route-blue: #3b82f6; 
+            --route-green: #10b981; 
         }
         
         html { scroll-behavior: smooth; }
@@ -78,22 +80,18 @@
             opacity: 0.5;
         }
 
-        /* 공통 버튼 스타일 */
         .btn-group {
             display: flex;
             gap: 10px;
             margin-top: 25px;
             justify-content: center;
         }
-        
-        /* 캘린더 전용 세로 정렬 버튼 그룹 */
         .calendar-btn-group {
             display: flex;
             flex-direction: column;
             gap: 8px;
             margin-top: 25px;
         }
-        
         .action-btn {
             flex: 1;
             padding: 12px 0;
@@ -113,7 +111,6 @@
             color: white;
         }
 
-        /* 메인 커버 */
         .hero { padding: 0; position: relative; }
         .hero-frame {
             position: absolute;
@@ -147,7 +144,6 @@
             font-weight: 300;
         }
         
-        /* 인사말 */
         .greeting-text {
             font-size: 15px;
             margin-bottom: 50px;
@@ -161,7 +157,6 @@
             margin: 0 5px;
         }
 
-        /* 디데이 & 캘린더 */
         .d-day-section {
             background-color: #faf7f2; 
             padding: 70px 20px;
@@ -184,16 +179,28 @@
         /* 오시는 길 & 지도 */
         .map-box {
             width: 100%;
-            height: 250px;
-            background-color: var(--point-gray);
+            background-color: var(--bg-color);
             margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #aaa;
-            font-size: 14px;
-            border: 1px solid #eee;
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            box-sizing: border-box;
         }
+
+        .map-text {
+            text-shadow: 
+                2px 2px 0 var(--bg-color), 
+                -2px 2px 0 var(--bg-color), 
+                2px -2px 0 var(--bg-color), 
+                -2px -2px 0 var(--bg-color),
+                0 2px 0 var(--bg-color),
+                0 -2px 0 var(--bg-color),
+                2px 0 0 var(--bg-color),
+                -2px 0 0 var(--bg-color);
+        }
+
         .address-info {
             text-align: center;
             font-size: 14px;
@@ -207,20 +214,54 @@
             font-weight: 600;
         }
 
-        /* 마음 전하실 곳 (계좌) */
+        /* 🌟 새로 디자인된 마음 전하실 곳 (계좌) CSS */
         .account-box {
             background-color: transparent;
             border: 1px solid #e5e5e5;
             padding: 25px 20px;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             text-align: left;
         }
-        .account-box p {
-            margin: 0 0 10px 0;
-            font-size: 14px;
+        .account-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .account-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .account-info p {
+            margin: 0;
+            font-size: 13px;
+            color: #888;
+            line-height: 1.5;
+        }
+        .account-info span {
+            color: var(--main-color);
+            font-weight: 600;
+            font-size: 14.5px;
+            display: inline-block;
+            margin-bottom: 2px;
+        }
+        .action-btn-small {
+            padding: 6px 14px;
+            border: 1px solid var(--gold);
+            background-color: transparent;
+            color: var(--gold);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 11px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .action-btn-small:hover {
+            background-color: var(--gold);
+            color: white;
         }
         
-        /* 갤러리 */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -279,12 +320,11 @@
         </div>
     </section>
 
-    <!-- 3. 디데이 & 캘린더 연동 섹션 -->
+    <!-- 3. 디데이 & 캘린더 섹션 -->
     <section class="d-day-section fade-up">
         <div class="eng-script" style="font-size: 28px; margin-bottom: 10px;">Our Wedding Day</div>
         <div id="d-day-text">준혁, 민주의 결혼식이<br><strong>00일</strong> 남았습니다.</div>
         
-        <!-- 3사 캘린더 앱 연결 버튼 (세로 정렬) -->
         <div class="calendar-btn-group">
             <button class="action-btn" onclick="openSamsungCalendar()">삼성(안드로이드) 캘린더 추가</button>
             <button class="action-btn" onclick="openAppleCalendar()">아이폰(Apple) 캘린더 추가</button>
@@ -305,14 +345,104 @@
         </div>
     </section>
 
-    <!-- 5. 오시는 길 & 지도 연동 섹션 -->
+    <!-- 5. 오시는 길 & 지도 섹션 -->
     <section class="location fade-up">
         <div class="divider"></div>
         <div class="eng-title">Location</div>
         <br>
         
+        <!-- 🎨 수정된 하이퀄리티 약도 -->
         <div class="map-box">
-            지도 이미지를 넣어주세요 (map.jpg)
+            <svg viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: 'Pretendard', sans-serif;">
+                
+                <!-- 북향 나침반 -->
+                <g transform="translate(360, 30)">
+                    <circle cx="0" cy="0" r="14" fill="#f9f9f9" stroke="#ddd" stroke-width="1"/>
+                    <path d="M0,-8 L4,4 L0,1 L-4,4 Z" fill="#c5a059"/>
+                    <text x="0" y="-13" font-size="10" fill="#888" font-weight="bold" text-anchor="middle">N</text>
+                </g>
+
+                <!-- 배경: 서울대학교 관악캠퍼스 영역 -->
+                <path d="M 90,180 Q 200,160 290,180 C 330,250 250,390 200,440 L 140,440 C 90,390 50,250 90,180 Z" fill="#f0f3f5" stroke="#e1e6eb" stroke-width="1.5"/>
+                
+                <text x="190" y="270" font-size="14" fill="#aab2bd" font-weight="600" text-anchor="middle" letter-spacing="1">서울대학교 관악캠퍼스</text>
+
+                <!-- 2호선 라인 -->
+                <path d="M -10,35 L 410,120" stroke="#4dbb63" stroke-width="4.5" opacity="0.6"/>
+                
+                <!-- 진입 도로 뼈대 (관악로 & 낙성대로) -->
+                <path d="M 110,60 L 110,200" stroke="#eaeaea" stroke-width="7" fill="none"/>
+                <path d="M 290,95 L 270,200" stroke="#eaeaea" stroke-width="7" fill="none"/>
+
+                <!-- 캠퍼스 내부 순환도로망 -->
+                <path d="M 110,200 C 110,280 140,360 180,390" stroke="#eaeaea" stroke-width="5" fill="none"/>
+                <path d="M 270,200 C 260,280 220,360 180,390" stroke="#eaeaea" stroke-width="5" fill="none"/>
+
+                <!-- 버스 경로 (블루 & 그린) -->
+                <path d="M 110,60 L 110,200 C 110,280 140,360 180,390" stroke="var(--route-blue)" stroke-width="2.5" stroke-dasharray="5 4" fill="none" opacity="0.8"/>
+                <path d="M 290,95 L 270,200 C 260,280 220,360 180,390" stroke="var(--route-green)" stroke-width="2.5" stroke-dasharray="5 4" fill="none" opacity="0.8"/>
+
+                <!-- 랜드마크 -->
+                <circle cx="70" cy="115" r="3.5" fill="#cfd4d9"/>
+                <text class="map-text" x="60" y="119" font-size="11.5" fill="#666" text-anchor="end" font-weight="600">관악구청</text>
+                
+                <circle cx="70" cy="145" r="3" fill="#dde1e5"/>
+                <text class="map-text" x="60" y="149" font-size="10.5" fill="#888" text-anchor="end">서울관악경찰서</text>
+                
+                <circle cx="330" cy="180" r="3.5" fill="#cfd4d9"/>
+                <text class="map-text" x="320" y="184" font-size="11.5" fill="#666" text-anchor="end" font-weight="600">낙성대공원</text>
+
+                <!-- 정문 / 후문 -->
+                <circle cx="110" cy="200" r="4.5" fill="#bbb"/>
+                <text class="map-text" x="95" y="204" font-size="11" fill="#888" text-anchor="end">정문</text>
+                
+                <circle cx="270" cy="200" r="4.5" fill="#bbb"/>
+                <text class="map-text" x="285" y="204" font-size="11" fill="#888" text-anchor="start">후문</text>
+
+                <!-- 🌟 역, 출구 표지판, 버스 아이콘 세트 -->
+                <!-- 1. 서울대입구역 세트 (서쪽) -->
+                <circle cx="110" cy="59" r="5" fill="#fff" stroke="#4dbb63" stroke-width="2.5"/>
+                <text class="map-text" x="110" y="42" font-size="14" fill="#333" font-weight="600" text-anchor="middle">서울대입구역</text>
+                
+                <g transform="translate(45, 65)">
+                    <rect x="0" y="0" width="45" height="16" rx="3" fill="#fff" stroke="#4dbb63" stroke-width="1.5"/>
+                    <text x="22.5" y="11.5" font-size="9.5" fill="#333" font-weight="600" text-anchor="middle">3번 출구</text>
+                </g>
+                
+                <g transform="translate(25, 85)">
+                    <rect x="0" y="0" width="16" height="12" rx="2.5" fill="var(--route-blue)"/>
+                    <rect x="2" y="2" width="12" height="4" fill="#fff" opacity="0.9"/>
+                    <circle cx="4" cy="12" r="2" fill="#444"/>
+                    <circle cx="12" cy="12" r="2" fill="#444"/>
+                    <text class="map-text" x="22" y="10" font-size="11" fill="var(--route-blue)" font-weight="700" text-anchor="start">5511, 5513</text>
+                </g>
+
+                <!-- 2. 낙성대역 세트 (동쪽) -->
+                <circle cx="290" cy="95" r="5" fill="#fff" stroke="#4dbb63" stroke-width="2.5"/>
+                <text class="map-text" x="290" y="78" font-size="14" fill="#333" font-weight="600" text-anchor="middle">낙성대역</text>
+                
+                <g transform="translate(235, 100)">
+                    <rect x="0" y="0" width="45" height="16" rx="3" fill="#fff" stroke="#4dbb63" stroke-width="1.5"/>
+                    <text x="22.5" y="11.5" font-size="9.5" fill="#333" font-weight="600" text-anchor="middle">4번 출구</text>
+                </g>
+
+                <g transform="translate(205, 120)">
+                    <rect x="0" y="0" width="16" height="12" rx="2.5" fill="var(--route-green)"/>
+                    <rect x="2" y="2" width="12" height="4" fill="#fff" opacity="0.9"/>
+                    <circle cx="4" cy="12" r="2" fill="#444"/>
+                    <circle cx="12" cy="12" r="2" fill="#444"/>
+                    <text class="map-text" x="22" y="10" font-size="11" fill="var(--route-green)" font-weight="700" text-anchor="start">관악02-1</text>
+                </g>
+
+                <!-- 🌟 목적지: 이라운지 서울대점 (제2공학관 텍스트 삭제 완료) -->
+                <g transform="translate(180, 390)">
+                    <path d="M 0,0 C -9,-9 -14,-16 -14,-22 C -14,-30 -8,-36 0,-36 C 8,-36 14,-30 14,-22 C 14,-16 9,-9 0,0 Z" fill="#eb5757"/>
+                    <circle cx="0" cy="-22" r="5" fill="#fff"/>
+                    <path d="M -3,-26 L -3,-21 L -2,-21 L -2,-17 L -1,-17 L -1,-21 L 0,-21 L 0,-26 Z M 2,-26 C 2,-22 4,-20 4,-17 L 5,-17 C 5,-20 3,-22 3,-26 Z" fill="#eb5757"/>
+                    <!-- 겹치던 텍스트를 제거하고 라벨 위치를 살짝 내렸습니다. -->
+                    <text class="map-text" x="0" y="-48" font-size="15" fill="#2c2c2c" font-weight="bold" text-anchor="middle">이라운지 서울대점</text>
+                </g>
+            </svg>
         </div>
         
         <div class="address-info">
@@ -324,17 +454,16 @@
                 <a href="https://m.map.kakao.com/actions/searchView?q=서울대학교%20이라운지" target="_blank" class="action-btn">카카오맵 앱</a>
             </div>
 
-            <!-- 대중교통 상세 안내 -->
             <p style="color: var(--gold); font-size: 13px; margin-bottom: 15px;">[ 대중교통 안내 ]</p>
             
             <div style="margin-bottom: 20px;">
                 <strong style="font-size: 15px; color: var(--main-color); display: block; margin-bottom: 5px;">2호선 서울대입구역 3번 출구</strong>
-                <p style="margin: 0; font-size: 14px; line-height: 1.6;">5511, 5513번 버스 승차<br>→ <b style="color: #444;">'제2공학관'</b> 정류장 하차</p>
+                <p style="margin: 0; font-size: 14px; line-height: 1.6;"><span style="color: var(--route-blue); font-weight: 600;">5511, 5513번 버스</span> 승차<br>→ <b style="color: #444;">'제2공학관'</b> 정류장 하차</p>
             </div>
             
             <div style="margin-bottom: 35px;">
                 <strong style="font-size: 15px; color: var(--main-color); display: block; margin-bottom: 5px;">2호선 낙성대역 4번 출구</strong>
-                <p style="margin: 0; font-size: 14px; line-height: 1.6;">관악02-1 마을버스 승차<br>→ <b style="color: #444;">'제2공학관'</b> 정류장 하차</p>
+                <p style="margin: 0; font-size: 14px; line-height: 1.6;"><span style="color: var(--route-green); font-weight: 600;">관악02-1 마을버스</span> 승차<br>→ <b style="color: #444;">'제2공학관'</b> 정류장 하차</p>
             </div>
 
             <p style="color: var(--gold); font-size: 13px; margin-bottom: 10px;">[ 주차 안내 ]</p>
@@ -342,22 +471,66 @@
         </div>
     </section>
 
-    <!-- 6. 마음 전하실 곳 -->
+    <!-- 🌟 마음 전하실 곳 (양가 부모님 및 각각 복사 버튼 추가) -->
     <section class="account fade-up">
         <div class="divider"></div>
         <div class="eng-title">Guestbook & Gift</div>
         <br>
         
+        <!-- 신랑측 계좌 -->
         <div class="account-box">
-            <p><strong>신랑측</strong></p>
-            <p style="color: #888;">국민은행 123456-00-123456 (장준혁)</p>
-            <button class="action-btn" style="margin-top: 5px;" onclick="copyToClipboard('12345600123456', '국민은행')">신랑 계좌번호 복사</button>
+            <p style="font-size: 16px; color: var(--main-color); margin-bottom: 15px;"><strong>신랑측</strong></p>
+            
+            <div class="account-item">
+                <div class="account-info">
+                    <p><span>신랑 장준혁</span><br>국민은행 123456-00-123456</p>
+                </div>
+                <button class="action-btn-small" onclick="copyToClipboard('12345600123456', '국민은행')">복사</button>
+            </div>
+            
+            <div class="account-item">
+                <div class="account-info">
+                    <!-- 실제 정보로 수정해주세요 -->
+                    <p><span>아버지 장ㅇㅇ</span><br>신한은행 111-222-333333</p>
+                </div>
+                <button class="action-btn-small" onclick="copyToClipboard('111222333333', '신한은행')">복사</button>
+            </div>
+            
+            <div class="account-item">
+                <div class="account-info">
+                    <!-- 실제 정보로 수정해주세요 -->
+                    <p><span>어머니 김ㅇㅇ</span><br>우리은행 1002-333-444444</p>
+                </div>
+                <button class="action-btn-small" onclick="copyToClipboard('1002333444444', '우리은행')">복사</button>
+            </div>
         </div>
 
+        <!-- 신부측 계좌 -->
         <div class="account-box">
-            <p><strong>신부측</strong></p>
-            <p style="color: #888;">신한은행 110-123-456789 (강민주)</p>
-            <button class="action-btn" style="margin-top: 5px;" onclick="copyToClipboard('110123456789', '신한은행')">신부 계좌번호 복사</button>
+            <p style="font-size: 16px; color: var(--main-color); margin-bottom: 15px;"><strong>신부측</strong></p>
+            
+            <div class="account-item">
+                <div class="account-info">
+                    <p><span>신부 강민주</span><br>신한은행 110-123-456789</p>
+                </div>
+                <button class="action-btn-small" onclick="copyToClipboard('110123456789', '신한은행')">복사</button>
+            </div>
+            
+            <div class="account-item">
+                <div class="account-info">
+                    <!-- 실제 정보로 수정해주세요 -->
+                    <p><span>아버지 강ㅇㅇ</span><br>농협은행 352-1234-5678-90</p>
+                </div>
+                <button class="action-btn-small" onclick="copyToClipboard('3521234567890', '농협은행')">복사</button>
+            </div>
+            
+            <div class="account-item">
+                <div class="account-info">
+                    <!-- 실제 정보로 수정해주세요 -->
+                    <p><span>어머니 이ㅇㅇ</span><br>하나은행 123-987654-32100</p>
+                </div>
+                <button class="action-btn-small" onclick="copyToClipboard('12398765432100', '하나은행')">복사</button>
+            </div>
         </div>
     </section>
     
@@ -398,7 +571,7 @@
         document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
     }
 
-    // 4-1. 삼성(안드로이드) 캘린더 연동 (Intent 방식)
+    // 4-1. 삼성(안드로이드) 캘린더 연동
     function openSamsungCalendar() {
         const title = "장준혁 ♥ 강민주 결혼식";
         const location = "서울 관악구 관악로 1 (서울대학교 이라운지)";
@@ -416,7 +589,7 @@
         window.location.href = intentUrl;
     }
 
-    // 4-2. 아이폰(Apple) 캘린더 연동 (Data URI 방식)
+    // 4-2. 아이폰(Apple) 캘린더 연동
     function openAppleCalendar() {
         const icsData = "BEGIN:VCALENDAR\n" +
             "VERSION:2.0\n" +

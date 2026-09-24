@@ -106,7 +106,7 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
-            width: 100%; /* 세로 정렬시 꽉 차게 */
+            width: 100%;
         }
         .action-btn:hover {
             background-color: var(--gold);
@@ -199,12 +199,12 @@
             font-size: 14px;
             color: var(--text-gray);
         }
-        .address-info strong {
+        .address-info .location-title {
             color: var(--main-color);
             display: block;
             font-size: 17px;
             margin-bottom: 10px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* 마음 전하실 곳 (계좌) */
@@ -316,19 +316,29 @@
         </div>
         
         <div class="address-info">
-            <strong>서울대학교 이라운지</strong>
+            <span class="location-title">서울대학교 이라운지</span>
             <p>서울 관악구 관악로 1 서울대학교 310동</p>
             
-            <div class="btn-group" style="margin-bottom: 30px;">
+            <div class="btn-group" style="margin-bottom: 40px;">
                 <a href="https://map.naver.com/p/search/서울대학교%20이라운지" target="_blank" class="action-btn">네이버 지도 앱</a>
                 <a href="https://m.map.kakao.com/actions/searchView?q=서울대학교%20이라운지" target="_blank" class="action-btn">카카오맵 앱</a>
             </div>
 
-            <p style="color: var(--gold); font-size: 13px;">[ 대중교통 안내 ]</p>
-            <p>2호선 서울대입구역 3번 출구, 5513번 버스 환승</p>
-            <br>
-            <p style="color: var(--gold); font-size: 13px;">[ 주차 안내 ]</p>
-            <p>서울대학교 교내 주차장 이용 (하객 주차권 지급)</p>
+            <!-- 대중교통 상세 안내 -->
+            <p style="color: var(--gold); font-size: 13px; margin-bottom: 15px;">[ 대중교통 안내 ]</p>
+            
+            <div style="margin-bottom: 20px;">
+                <strong style="font-size: 15px; color: var(--main-color); display: block; margin-bottom: 5px;">2호선 서울대입구역 3번 출구</strong>
+                <p style="margin: 0; font-size: 14px; line-height: 1.6;">5511, 5513번 버스 승차<br>→ <b style="color: #444;">'제2공학관'</b> 정류장 하차</p>
+            </div>
+            
+            <div style="margin-bottom: 35px;">
+                <strong style="font-size: 15px; color: var(--main-color); display: block; margin-bottom: 5px;">2호선 낙성대역 4번 출구</strong>
+                <p style="margin: 0; font-size: 14px; line-height: 1.6;">관악02-1 마을버스 승차<br>→ <b style="color: #444;">'제2공학관'</b> 정류장 하차</p>
+            </div>
+
+            <p style="color: var(--gold); font-size: 13px; margin-bottom: 10px;">[ 주차 안내 ]</p>
+            <p style="margin: 0;">서울대학교 교내 주차장 이용 (하객 주차권 지급)</p>
         </div>
     </section>
 
@@ -393,11 +403,9 @@
         const title = "장준혁 ♥ 강민주 결혼식";
         const location = "서울 관악구 관악로 1 (서울대학교 이라운지)";
         
-        // 시간 설정 (밀리초)
         const beginTime = new Date("2027-03-28T14:00:00+09:00").getTime();
         const endTime = new Date("2027-03-28T16:00:00+09:00").getTime();
         
-        // 안드로이드 시스템에 캘린더 일정 추가 화면을 즉시 띄우는 명령(Intent)입니다.
         const intentUrl = 'intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;' +
             'S.title=' + encodeURIComponent(title) + ';' +
             'S.eventLocation=' + encodeURIComponent(location) + ';' +
@@ -410,14 +418,13 @@
 
     // 4-2. 아이폰(Apple) 캘린더 연동 (Data URI 방식)
     function openAppleCalendar() {
-        // 아이폰 사파리에서 파일 다운로드 없이 캘린더 앱 추가 화면이 바로 뜨도록 하는 방식입니다.
         const icsData = "BEGIN:VCALENDAR\n" +
             "VERSION:2.0\n" +
             "PRODID:-//Wedding Invitation//KO\n" +
             "BEGIN:VEVENT\n" +
             "UID:wedding-20270328T140000\n" +
             "DTSTAMP:20270328T050000Z\n" +
-            "DTSTART:20270328T050000Z\n" + // 한국 시간 14시 = 협정 세계시(UTC) 05시
+            "DTSTART:20270328T050000Z\n" +
             "DTEND:20270328T070000Z\n" +
             "SUMMARY:장준혁 ♥ 강민주 결혼식\n" +
             "DESCRIPTION:장소: 서울대학교 이라운지\n" +
@@ -428,7 +435,7 @@
         window.location.href = "data:text/calendar;charset=utf8," + encodeURIComponent(icsData);
     }
 
-    // 4-3. 구글 캘린더 연동 (웹/앱 자동 연결)
+    // 4-3. 구글 캘린더 연동
     function openGoogleCalendar() {
         const url = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=장준혁+%E2%99%A5+강민주+결혼식&dates=20270328T050000Z/20270328T070000Z&details=장소:+서울대학교+이라운지&location=서울+관악구+관악로+1";
         window.open(url, '_blank');

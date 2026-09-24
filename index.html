@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장준혁 & 강민주 결혼합니다</title>
     
-    <!-- 깔끔한 고딕체(프리텐다드) & 화려한 영문 폰트 불러오기 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +13,8 @@
     <style>
         :root {
             --main-color: #2c2c2c;
-            --bg-color: #fdfcfb; /* 따뜻한 아이보리 화이트 */
-            --gold: #c5a059;     /* 샴페인 골드 포인트 */
+            --bg-color: #fdfcfb; 
+            --gold: #c5a059;     
             --point-gray: #f5f5f5;
             --text-gray: #666666;
         }
@@ -46,7 +45,6 @@
             text-align: center;
         }
         
-        /* 스크롤 애니메이션 */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -57,7 +55,6 @@
             transform: translateY(0);
         }
 
-        /* 화려한 폰트 스타일 */
         .eng-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 18px;
@@ -73,7 +70,6 @@
             margin-bottom: 20px;
         }
 
-        /* 고급스러운 세로선 장식 */
         .divider {
             width: 1px;
             height: 50px;
@@ -82,12 +78,33 @@
             opacity: 0.5;
         }
 
-        /* 메인 커버 */
-        .hero { 
-            padding: 0; 
-            position: relative;
+        /* 공통 버튼 스타일 */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            justify-content: center;
         }
-        /* 메인 이미지 테두리 장식 */
+        .action-btn {
+            flex: 1;
+            padding: 12px 0;
+            border: 1px solid var(--gold);
+            background-color: transparent;
+            color: var(--gold);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .action-btn:hover {
+            background-color: var(--gold);
+            color: white;
+        }
+
+        /* 메인 커버 */
+        .hero { padding: 0; position: relative; }
         .hero-frame {
             position: absolute;
             top: 15px; left: 15px; right: 15px; bottom: 15px;
@@ -134,9 +151,9 @@
             margin: 0 5px;
         }
 
-        /* 디데이 카운트다운 */
+        /* 디데이 & 캘린더 */
         .d-day-section {
-            background-color: #faf7f2; /* 아주 연한 베이지 골드 */
+            background-color: #faf7f2; 
             padding: 70px 20px;
             border-top: 1px solid #f0e9df;
             border-bottom: 1px solid #f0e9df;
@@ -146,6 +163,7 @@
             font-weight: 300;
             letter-spacing: 0.05em;
             color: var(--main-color);
+            margin-bottom: 15px;
         }
         #d-day-text strong { 
             font-weight: 500;
@@ -153,7 +171,7 @@
             font-size: 22px;
         }
 
-        /* 오시는 길 */
+        /* 오시는 길 & 지도 */
         .map-box {
             width: 100%;
             height: 250px;
@@ -170,7 +188,6 @@
             text-align: center;
             font-size: 14px;
             color: var(--text-gray);
-            margin-bottom: 30px;
         }
         .address-info strong {
             color: var(--main-color);
@@ -192,22 +209,6 @@
             margin: 0 0 10px 0;
             font-size: 14px;
         }
-        /* 우아한 골드 테두리 버튼 */
-        .copy-btn {
-            background-color: transparent;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 10px 15px;
-            font-size: 13px;
-            cursor: pointer;
-            width: 100%;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-        .copy-btn:hover {
-            background-color: var(--gold);
-            color: white;
-        }
         
         /* 갤러리 */
         .gallery-grid {
@@ -227,7 +228,7 @@
             text-align: center;
             font-size: 11px;
             color: #ccc;
-            background-color: #2c2c2c; /* 다크한 푸터로 묵직한 마무리 */
+            background-color: #2c2c2c; 
             letter-spacing: 0.1em;
         }
     </style>
@@ -243,7 +244,7 @@
         <div style="width:100%; height:70vh; background:#f5f5f5; position:absolute; top:0; z-index:-1; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:14px;">메인 사진 (main.jpg)을 올려주세요</div>
         
         <div class="hero-text fade-up">
-            <div class="eng-script">Junhyuk & Minju</div>
+            <div class="eng-script">Junhyuk & Minjoo</div>
             <h1>장준혁 &middot; 강민주</h1>
             <p>2027년 3월 28일 일요일 오후 2시</p>
             <p>서울대학교 이라운지</p>
@@ -268,10 +269,16 @@
         </div>
     </section>
 
-    <!-- 3. 디데이 섹션 -->
+    <!-- 3. 디데이 & 캘린더 연동 섹션 -->
     <section class="d-day-section fade-up">
         <div class="eng-script" style="font-size: 28px; margin-bottom: 10px;">Our Wedding Day</div>
         <div id="d-day-text">준혁, 민주의 결혼식이<br><strong>00일</strong> 남았습니다.</div>
+        
+        <!-- 캘린더 추가 버튼 (구글 & 애플/기본) -->
+        <div class="btn-group">
+            <button class="action-btn" onclick="openGoogleCalendar()">구글 캘린더 추가</button>
+            <button class="action-btn" onclick="downloadICS()">애플/기본 캘린더 추가</button>
+        </div>
     </section>
 
     <!-- 4. 갤러리 섹션 -->
@@ -287,7 +294,7 @@
         </div>
     </section>
 
-    <!-- 5. 오시는 길 섹션 -->
+    <!-- 5. 오시는 길 & 지도 연동 섹션 -->
     <section class="location fade-up">
         <div class="divider"></div>
         <div class="eng-title">Location</div>
@@ -296,10 +303,17 @@
         <div class="map-box">
             지도 이미지를 넣어주세요 (map.jpg)
         </div>
+        
         <div class="address-info">
             <strong>서울대학교 이라운지</strong>
             <p>서울 관악구 관악로 1 서울대학교 310동</p>
-            <br>
+            
+            <!-- 네이버/카카오 지도 앱 바로가기 버튼 -->
+            <div class="btn-group" style="margin-bottom: 30px;">
+                <a href="https://map.naver.com/p/search/서울대학교%20이라운지" target="_blank" class="action-btn">네이버 지도 앱</a>
+                <a href="https://m.map.kakao.com/actions/searchView?q=서울대학교%20이라운지" target="_blank" class="action-btn">카카오맵 앱</a>
+            </div>
+
             <p style="color: var(--gold); font-size: 13px;">[ 대중교통 안내 ]</p>
             <p>2호선 서울대입구역 3번 출구, 5513번 버스 환승</p>
             <br>
@@ -317,62 +331,82 @@
         <div class="account-box">
             <p><strong>신랑측</strong></p>
             <p style="color: #888;">국민은행 123456-00-123456 (장준혁)</p>
-            <button class="copy-btn" onclick="copyToClipboard('12345600123456', '국민은행')">신랑 계좌번호 복사</button>
+            <button class="action-btn" style="width: 100%; margin-top: 5px;" onclick="copyToClipboard('12345600123456', '국민은행')">신랑 계좌번호 복사</button>
         </div>
 
         <div class="account-box">
             <p><strong>신부측</strong></p>
             <p style="color: #888;">신한은행 110-123-456789 (강민주)</p>
-            <button class="copy-btn" onclick="copyToClipboard('110123456789', '신한은행')">신부 계좌번호 복사</button>
+            <button class="action-btn" style="width: 100%; margin-top: 5px;" onclick="copyToClipboard('110123456789', '신한은행')">신부 계좌번호 복사</button>
         </div>
     </section>
     
     <div class="footer">
-        © 2027 JUNHYUK & MINJU. ALL RIGHTS RESERVED.
+        © 2027 JUNHYUK & MINJOO. ALL RIGHTS RESERVED.
     </div>
 
 </div>
 
 <script>
+    // 1. 디데이 계산
     function calculateDday() {
         const weddingDate = new Date("2027-03-28T14:00:00").getTime();
         const today = new Date().getTime();
         const distance = weddingDate - today;
-        
         const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
         const ddayElement = document.getElementById("d-day-text");
         
-        if (days > 0) {
-            ddayElement.innerHTML = `준혁, 민주의 결혼식이<br><strong>${days}일</strong> 남았습니다.`;
-        } else if (days === 0) {
-            ddayElement.innerHTML = `오늘은 준혁, 민주의<br><strong>결혼식 날</strong>입니다!`;
-        } else {
-            ddayElement.innerHTML = `준혁, 민주의 결혼식이<br><strong>${Math.abs(days)}일</strong> 지났습니다.`;
-        }
+        if (days > 0) ddayElement.innerHTML = `준혁, 민주의 결혼식이<br><strong>${days}일</strong> 남았습니다.`;
+        else if (days === 0) ddayElement.innerHTML = `오늘은 준혁, 민주의<br><strong>결혼식 날</strong>입니다!`;
+        else ddayElement.innerHTML = `준혁, 민주의 결혼식이<br><strong>${Math.abs(days)}일</strong> 지났습니다.`;
     }
     
+    // 2. 계좌 복사
     function copyToClipboard(accountNumber, bankName) {
         navigator.clipboard.writeText(accountNumber).then(() => {
             alert(bankName + ' 계좌번호(' + accountNumber + ')가 복사되었습니다.');
-        }).catch(err => {
-            alert('복사에 실패했습니다. 직접 선택하여 복사해주세요.');
-        });
+        }).catch(err => alert('복사에 실패했습니다. 직접 선택하여 복사해주세요.'));
     }
 
+    // 3. 스크롤 애니메이션
     function initScrollAnimation() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+    }
 
-        document.querySelectorAll('.fade-up').forEach((el) => {
-            observer.observe(el);
-        });
+    // 4. 구글 캘린더 연동 (웹/앱 자동 전환)
+    function openGoogleCalendar() {
+        const url = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=장준혁+%E2%99%A5+강민주+결혼식&dates=20270328T050000Z/20270328T070000Z&details=장소:+서울대학교+이라운지&location=서울+관악구+관악로+1";
+        window.open(url, '_blank');
+    }
+
+    // 5. 애플/아이폰 및 삼성 기본 캘린더 연동 (.ics 파일 다운로드 방식)
+    function downloadICS() {
+        const icsData = "BEGIN:VCALENDAR\n" +
+            "VERSION:2.0\n" +
+            "PRODID:-//Wedding Invitation//KO\n" +
+            "BEGIN:VEVENT\n" +
+            "UID:wedding-20270328T140000\n" +
+            "DTSTAMP:20260924T000000Z\n" +
+            "DTSTART;TZID=Asia/Seoul:20270328T140000\n" +
+            "DTEND;TZID=Asia/Seoul:20270328T160000\n" +
+            "SUMMARY:장준혁 ♥ 강민주 결혼식\n" +
+            "DESCRIPTION:장소: 서울대학교 이라운지\n" +
+            "LOCATION:서울 관악구 관악로 1\n" +
+            "END:VEVENT\n" +
+            "END:VCALENDAR";
+            
+        const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'wedding_schedule.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     window.onload = function() {

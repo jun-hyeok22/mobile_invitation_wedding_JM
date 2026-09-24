@@ -85,6 +85,15 @@
             margin-top: 25px;
             justify-content: center;
         }
+        
+        /* 캘린더 전용 세로 정렬 버튼 그룹 */
+        .calendar-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 25px;
+        }
+        
         .action-btn {
             flex: 1;
             padding: 12px 0;
@@ -97,6 +106,7 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
+            width: 100%; /* 세로 정렬시 꽉 차게 */
         }
         .action-btn:hover {
             background-color: var(--gold);
@@ -274,10 +284,11 @@
         <div class="eng-script" style="font-size: 28px; margin-bottom: 10px;">Our Wedding Day</div>
         <div id="d-day-text">준혁, 민주의 결혼식이<br><strong>00일</strong> 남았습니다.</div>
         
-        <!-- 캘린더 추가 버튼 (구글 & 애플/기본) -->
-        <div class="btn-group">
-            <button class="action-btn" onclick="openGoogleCalendar()">구글 캘린더 추가</button>
-            <button class="action-btn" onclick="downloadICS()">애플/기본 캘린더 추가</button>
+        <!-- 3사 캘린더 앱 연결 버튼 (세로 정렬) -->
+        <div class="calendar-btn-group">
+            <button class="action-btn" onclick="openSamsungCalendar()">삼성(안드로이드) 캘린더 추가</button>
+            <button class="action-btn" onclick="openAppleCalendar()">아이폰(Apple) 캘린더 추가</button>
+            <button class="action-btn" onclick="openGoogleCalendar()">구글(Google) 캘린더 추가</button>
         </div>
     </section>
 
@@ -308,7 +319,6 @@
             <strong>서울대학교 이라운지</strong>
             <p>서울 관악구 관악로 1 서울대학교 310동</p>
             
-            <!-- 네이버/카카오 지도 앱 바로가기 버튼 -->
             <div class="btn-group" style="margin-bottom: 30px;">
                 <a href="https://map.naver.com/p/search/서울대학교%20이라운지" target="_blank" class="action-btn">네이버 지도 앱</a>
                 <a href="https://m.map.kakao.com/actions/searchView?q=서울대학교%20이라운지" target="_blank" class="action-btn">카카오맵 앱</a>
@@ -331,13 +341,13 @@
         <div class="account-box">
             <p><strong>신랑측</strong></p>
             <p style="color: #888;">국민은행 123456-00-123456 (장준혁)</p>
-            <button class="action-btn" style="width: 100%; margin-top: 5px;" onclick="copyToClipboard('12345600123456', '국민은행')">신랑 계좌번호 복사</button>
+            <button class="action-btn" style="margin-top: 5px;" onclick="copyToClipboard('12345600123456', '국민은행')">신랑 계좌번호 복사</button>
         </div>
 
         <div class="account-box">
             <p><strong>신부측</strong></p>
             <p style="color: #888;">신한은행 110-123-456789 (강민주)</p>
-            <button class="action-btn" style="width: 100%; margin-top: 5px;" onclick="copyToClipboard('110123456789', '신한은행')">신부 계좌번호 복사</button>
+            <button class="action-btn" style="margin-top: 5px;" onclick="copyToClipboard('110123456789', '신한은행')">신부 계좌번호 복사</button>
         </div>
     </section>
     
@@ -378,35 +388,50 @@
         document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
     }
 
-    // 4. 구글 캘린더 연동 (웹/앱 자동 전환)
-    function openGoogleCalendar() {
-        const url = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=장준혁+%E2%99%A5+강민주+결혼식&dates=20270328T050000Z/20270328T070000Z&details=장소:+서울대학교+이라운지&location=서울+관악구+관악로+1";
-        window.open(url, '_blank');
+    // 4-1. 삼성(안드로이드) 캘린더 연동 (Intent 방식)
+    function openSamsungCalendar() {
+        const title = "장준혁 ♥ 강민주 결혼식";
+        const location = "서울 관악구 관악로 1 (서울대학교 이라운지)";
+        
+        // 시간 설정 (밀리초)
+        const beginTime = new Date("2027-03-28T14:00:00+09:00").getTime();
+        const endTime = new Date("2027-03-28T16:00:00+09:00").getTime();
+        
+        // 안드로이드 시스템에 캘린더 일정 추가 화면을 즉시 띄우는 명령(Intent)입니다.
+        const intentUrl = 'intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;' +
+            'S.title=' + encodeURIComponent(title) + ';' +
+            'S.eventLocation=' + encodeURIComponent(location) + ';' +
+            'l.beginTime=' + beginTime + ';' +
+            'l.endTime=' + endTime + ';' +
+            'end;';
+            
+        window.location.href = intentUrl;
     }
 
-    // 5. 애플/아이폰 및 삼성 기본 캘린더 연동 (.ics 파일 다운로드 방식)
-    function downloadICS() {
+    // 4-2. 아이폰(Apple) 캘린더 연동 (Data URI 방식)
+    function openAppleCalendar() {
+        // 아이폰 사파리에서 파일 다운로드 없이 캘린더 앱 추가 화면이 바로 뜨도록 하는 방식입니다.
         const icsData = "BEGIN:VCALENDAR\n" +
             "VERSION:2.0\n" +
             "PRODID:-//Wedding Invitation//KO\n" +
             "BEGIN:VEVENT\n" +
             "UID:wedding-20270328T140000\n" +
-            "DTSTAMP:20260924T000000Z\n" +
-            "DTSTART;TZID=Asia/Seoul:20270328T140000\n" +
-            "DTEND;TZID=Asia/Seoul:20270328T160000\n" +
+            "DTSTAMP:20270328T050000Z\n" +
+            "DTSTART:20270328T050000Z\n" + // 한국 시간 14시 = 협정 세계시(UTC) 05시
+            "DTEND:20270328T070000Z\n" +
             "SUMMARY:장준혁 ♥ 강민주 결혼식\n" +
             "DESCRIPTION:장소: 서울대학교 이라운지\n" +
             "LOCATION:서울 관악구 관악로 1\n" +
             "END:VEVENT\n" +
             "END:VCALENDAR";
             
-        const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = 'wedding_schedule.ics';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        window.location.href = "data:text/calendar;charset=utf8," + encodeURIComponent(icsData);
+    }
+
+    // 4-3. 구글 캘린더 연동 (웹/앱 자동 연결)
+    function openGoogleCalendar() {
+        const url = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=장준혁+%E2%99%A5+강민주+결혼식&dates=20270328T050000Z/20270328T070000Z&details=장소:+서울대학교+이라운지&location=서울+관악구+관악로+1";
+        window.open(url, '_blank');
     }
 
     window.onload = function() {

@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장준혁 & 강민주 결혼합니다</title>
-    <!-- 깔끔한 고딕체(프리텐다드) 폰트 불러오기 -->
+    
+    <!-- 깔끔한 고딕체(프리텐다드) & 화려한 영문 폰트 불러오기 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --main-color: #333333;
-            --bg-color: #ffffff;
+            --main-color: #2c2c2c;
+            --bg-color: #fdfcfb; /* 따뜻한 아이보리 화이트 */
+            --gold: #c5a059;     /* 샴페인 골드 포인트 */
             --point-gray: #f5f5f5;
             --text-gray: #666666;
-            --leaf-green: #aebca9; 
-            --bg-green: #f2f5f1;   
         }
         
-        /* 스크롤 부드럽게 */
         html { scroll-behavior: smooth; }
         
         body {
@@ -33,110 +36,138 @@
             max-width: 480px;
             margin: 0 auto;
             background-color: var(--bg-color);
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
+            position: relative;
         }
         
         section {
-            padding: 80px 30px;
+            padding: 90px 30px;
             text-align: center;
         }
         
-        /* 🔥 스크롤 애니메이션 효과 (Fade-up) */
+        /* 스크롤 애니메이션 */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
+        /* 화려한 폰트 스타일 */
+        .eng-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .eng-script {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* 고급스러운 세로선 장식 */
+        .divider {
+            width: 1px;
+            height: 50px;
+            background-color: var(--gold);
+            margin: 0 auto 30px;
+            opacity: 0.5;
+        }
+
         /* 메인 커버 */
-        .hero { padding: 0; position: relative; }
+        .hero { 
+            padding: 0; 
+            position: relative;
+        }
+        /* 메인 이미지 테두리 장식 */
+        .hero-frame {
+            position: absolute;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            z-index: 2;
+            pointer-events: none;
+        }
         .main-img {
             width: 100%;
-            height: 65vh;
+            height: 70vh;
             object-fit: cover;
             background-color: var(--point-gray);
             display: block;
         }
-        .hero-text { padding: 50px 20px 40px; }
+        .hero-text { 
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, #fdfcfb 0%, #ffffff 100%);
+        }
         .hero-text h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 400;
-            margin-bottom: 20px;
-            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+            letter-spacing: 0.15em;
+            color: var(--main-color);
         }
         .hero-text p {
             font-size: 14px;
             color: var(--text-gray);
             margin: 5px 0;
-        }
-
-        /* 식물 일러스트 장식 */
-        .leaf-deco {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
+            font-weight: 300;
         }
         
         /* 인사말 */
-        .greeting { padding-top: 20px; }
-        .greeting-title {
-            font-size: 14px;
-            color: var(--leaf-green);
-            margin-bottom: 30px;
-            letter-spacing: 0.2em;
-            font-weight: 500;
-        }
         .greeting-text {
             font-size: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             font-weight: 300;
+            line-height: 2;
         }
         .parents { font-size: 16px; }
         .parents span {
-            font-size: 14px;
-            color: var(--text-gray);
+            font-size: 13px;
+            color: var(--gold);
             margin: 0 5px;
         }
 
         /* 디데이 카운트다운 */
         .d-day-section {
-            background-color: var(--bg-green);
-            padding: 50px 20px;
+            background-color: #faf7f2; /* 아주 연한 베이지 골드 */
+            padding: 70px 20px;
+            border-top: 1px solid #f0e9df;
+            border-bottom: 1px solid #f0e9df;
         }
         #d-day-text {
-            font-size: 20px;
-            font-weight: 400;
+            font-size: 18px;
+            font-weight: 300;
             letter-spacing: 0.05em;
-            color: #4a5446;
+            color: var(--main-color);
         }
-        #d-day-text strong { font-weight: 600; }
+        #d-day-text strong { 
+            font-weight: 500;
+            color: var(--gold);
+            font-size: 22px;
+        }
 
         /* 오시는 길 */
-        .location h2 {
-            font-size: 16px;
-            color: var(--leaf-green);
-            font-weight: 500;
-            margin-bottom: 30px;
-            letter-spacing: 0.1em;
-        }
         .map-box {
             width: 100%;
             height: 250px;
             background-color: var(--point-gray);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #aaa;
             font-size: 14px;
+            border: 1px solid #eee;
         }
         .address-info {
-            text-align: left;
+            text-align: center;
             font-size: 14px;
             color: var(--text-gray);
             margin-bottom: 30px;
@@ -144,22 +175,16 @@
         .address-info strong {
             color: var(--main-color);
             display: block;
-            font-size: 16px;
-            margin-bottom: 5px;
+            font-size: 17px;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         /* 마음 전하실 곳 (계좌) */
-        .account h2 {
-            font-size: 16px;
-            color: var(--leaf-green);
-            font-weight: 500;
-            margin-bottom: 30px;
-            letter-spacing: 0.1em;
-        }
         .account-box {
-            background-color: var(--bg-color);
-            border: 1px solid #e0e0e0;
-            padding: 20px;
+            background-color: transparent;
+            border: 1px solid #e5e5e5;
+            padding: 25px 20px;
             margin-bottom: 15px;
             text-align: left;
         }
@@ -167,29 +192,28 @@
             margin: 0 0 10px 0;
             font-size: 14px;
         }
+        /* 우아한 골드 테두리 버튼 */
         .copy-btn {
-            background-color: var(--main-color);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            font-size: 12px;
+            background-color: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 15px;
+            font-size: 13px;
             cursor: pointer;
             width: 100%;
             font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        .copy-btn:hover {
+            background-color: var(--gold);
+            color: white;
         }
         
         /* 갤러리 */
-        .gallery h2 {
-            font-size: 16px;
-            color: var(--leaf-green);
-            font-weight: 500;
-            margin-bottom: 30px;
-            letter-spacing: 0.1em;
-        }
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
         }
         .gallery-item {
             width: 100%;
@@ -199,11 +223,12 @@
         }
 
         .footer {
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
-            font-size: 12px;
-            color: #aaa;
-            background-color: var(--point-gray);
+            font-size: 11px;
+            color: #ccc;
+            background-color: #2c2c2c; /* 다크한 푸터로 묵직한 마무리 */
+            letter-spacing: 0.1em;
         }
     </style>
 </head>
@@ -213,29 +238,22 @@
     
     <!-- 1. 메인 섹션 -->
     <section class="hero">
+        <div class="hero-frame"></div>
         <img src="main.jpg" alt="메인 웨딩 사진" class="main-img" onerror="this.style.display='none';">
-        <div style="width:100%; height:65vh; background:#f5f5f5; position:absolute; top:0; z-index:-1; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:14px;">메인 사진 (main.jpg)을 올려주세요</div>
+        <div style="width:100%; height:70vh; background:#f5f5f5; position:absolute; top:0; z-index:-1; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:14px;">메인 사진 (main.jpg)을 올려주세요</div>
         
         <div class="hero-text fade-up">
+            <div class="eng-script">Junhyuk & Minju</div>
             <h1>장준혁 &middot; 강민주</h1>
             <p>2027년 3월 28일 일요일 오후 2시</p>
             <p>서울대학교 이라운지</p>
         </div>
     </section>
 
-    <!-- 2. 인사말 섹션 (fade-up 추가) -->
+    <!-- 2. 인사말 섹션 -->
     <section class="greeting fade-up">
-        <div class="leaf-deco">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aebca9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22V10"></path>
-                <path d="M12 12C12 12 9.5 9.5 7 10C5.5 10.3 5 12 5 12C5 12 6.7 13.5 10 13.5C11.5 13.5 12 12 12 12Z"></path>
-                <path d="M12 15C12 15 14.5 12.5 17 13C18.5 13.3 19 15 19 15C19 15 17.3 16.5 14 16.5C12.5 16.5 12 15 12 15Z"></path>
-                <path d="M12 8C12 8 9.5 5.5 7 6C5.5 6.3 5 8 5 8C5 8 6.7 9.5 10 9.5C11.5 9.5 12 8 12 8Z"></path>
-                <path d="M12 10C12 10 14.5 7.5 17 8C18.5 8.3 19 10 19 10C19 10 17.3 11.5 14 11.5C12.5 11.5 12 10 12 10Z"></path>
-            </svg>
-        </div>
-        
-        <div class="greeting-title">INVITATION</div>
+        <div class="divider"></div>
+        <div class="eng-title">Invitation</div>
         <div class="greeting-text">
             함께 있을 때 가장 나다운 모습이 되게 하는 사람,<br>
             그 사람과 평생을 함께할 약속을 합니다.<br><br>
@@ -245,19 +263,22 @@
             감사하겠습니다.
         </div>
         <div class="parents">
-            장ㅇㅇ &middot; 김ㅇㅇ <span>의 장남</span> 준혁<br>
+            장ㅇㅇ &middot; 김ㅇㅇ <span>의 장남</span> 준혁<br><br>
             강ㅇㅇ &middot; 이ㅇㅇ <span>의 장녀</span> 민주
         </div>
     </section>
 
-    <!-- 3. 디데이 섹션 (fade-up 추가) -->
+    <!-- 3. 디데이 섹션 -->
     <section class="d-day-section fade-up">
+        <div class="eng-script" style="font-size: 28px; margin-bottom: 10px;">Our Wedding Day</div>
         <div id="d-day-text">준혁, 민주의 결혼식이<br><strong>00일</strong> 남았습니다.</div>
     </section>
 
-    <!-- 4. 갤러리 섹션 (fade-up 추가) -->
+    <!-- 4. 갤러리 섹션 -->
     <section class="gallery fade-up">
-        <h2>GALLERY</h2>
+        <div class="divider"></div>
+        <div class="eng-title">Gallery</div>
+        <br>
         <div class="gallery-grid">
             <img src="photo1.jpg" class="gallery-item" alt="웨딩사진 1" onerror="this.style.opacity='0.5'">
             <img src="photo2.jpg" class="gallery-item" alt="웨딩사진 2" onerror="this.style.opacity='0.5'">
@@ -266,16 +287,11 @@
         </div>
     </section>
 
-    <!-- 5. 오시는 길 섹션 (fade-up 추가) -->
+    <!-- 5. 오시는 길 섹션 -->
     <section class="location fade-up">
-        <div class="leaf-deco">
-            <svg width="40" height="15" viewBox="0 0 40 15" fill="none" stroke="#aebca9" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 8 C15 5 25 11 35 8" />
-                <path d="M12 6 C10 4 13 2 15 4" />
-                <path d="M28 9 C30 11 27 13 25 11" />
-            </svg>
-        </div>
-        <h2>LOCATION</h2>
+        <div class="divider"></div>
+        <div class="eng-title">Location</div>
+        <br>
         
         <div class="map-box">
             지도 이미지를 넣어주세요 (map.jpg)
@@ -284,38 +300,40 @@
             <strong>서울대학교 이라운지</strong>
             <p>서울 관악구 관악로 1 서울대학교 310동</p>
             <br>
-            <p>[대중교통 안내]</p>
+            <p style="color: var(--gold); font-size: 13px;">[ 대중교통 안내 ]</p>
             <p>2호선 서울대입구역 3번 출구, 5513번 버스 환승</p>
-            <p>[주차 안내]</p>
+            <br>
+            <p style="color: var(--gold); font-size: 13px;">[ 주차 안내 ]</p>
             <p>서울대학교 교내 주차장 이용 (하객 주차권 지급)</p>
         </div>
     </section>
 
-    <!-- 6. 마음 전하실 곳 (fade-up 추가) -->
+    <!-- 6. 마음 전하실 곳 -->
     <section class="account fade-up">
-        <h2>마음 전하실 곳</h2>
+        <div class="divider"></div>
+        <div class="eng-title">Guestbook & Gift</div>
+        <br>
         
         <div class="account-box">
             <p><strong>신랑측</strong></p>
-            <p>국민은행 123456-00-123456 (장준혁)</p>
+            <p style="color: #888;">국민은행 123456-00-123456 (장준혁)</p>
             <button class="copy-btn" onclick="copyToClipboard('12345600123456', '국민은행')">신랑 계좌번호 복사</button>
         </div>
 
         <div class="account-box">
             <p><strong>신부측</strong></p>
-            <p>신한은행 110-123-456789 (강민주)</p>
+            <p style="color: #888;">신한은행 110-123-456789 (강민주)</p>
             <button class="copy-btn" onclick="copyToClipboard('110123456789', '신한은행')">신부 계좌번호 복사</button>
         </div>
     </section>
     
     <div class="footer">
-        © 2027 Junhyuk & Minju. All rights reserved.
+        © 2027 JUNHYUK & MINJU. ALL RIGHTS RESERVED.
     </div>
 
 </div>
 
 <script>
-    // 1. 디데이 계산기
     function calculateDday() {
         const weddingDate = new Date("2027-03-28T14:00:00").getTime();
         const today = new Date().getTime();
@@ -333,7 +351,6 @@
         }
     }
     
-    // 2. 계좌번호 복사
     function copyToClipboard(accountNumber, bankName) {
         navigator.clipboard.writeText(accountNumber).then(() => {
             alert(bankName + ' 계좌번호(' + accountNumber + ')가 복사되었습니다.');
@@ -342,7 +359,6 @@
         });
     }
 
-    // 3. 스크롤 애니메이션 옵저버 (새로 추가된 기능)
     function initScrollAnimation() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -351,16 +367,14 @@
                 }
             });
         }, {
-            threshold: 0.1 // 요소가 10% 보일 때 애니메이션 시작
+            threshold: 0.1
         });
 
-        // fade-up 클래스를 가진 모든 요소를 관찰
         document.querySelectorAll('.fade-up').forEach((el) => {
             observer.observe(el);
         });
     }
 
-    // 페이지 로드 시 실행할 함수들
     window.onload = function() {
         calculateDday();
         initScrollAnimation();
